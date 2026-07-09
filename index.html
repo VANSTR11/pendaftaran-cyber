@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Member - Komunitas Cyber Security</title>
+<style>
+    body { font-family: 'Segoe UI', sans-serif; background: #050505; color: #00ff88; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+    .container { background: #121212; padding: 30px; border-radius: 12px; border: 1px solid #00ff88; width: 100%; max-width: 480px; box-shadow: 0 0 25px #00ff8844; }
+    .logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .logos img { width: 70px; height: 70px; object-fit: contain; border-radius: 8px; background: #000; padding: 5px; }
+    h2 { text-align: center; margin: 5px 0; font-size: 22px; }
+    h4 { text-align: center; color: #aaa; margin-bottom: 20px; font-weight: normal; }
+    input, textarea, select { width: 100%; padding: 12px; margin: 8px 0; background: #0a0a0a; border: 1px solid #00ff88; color: #fff; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+    button { width: 100%; padding: 14px; background: #00ff88; color: #000; border: none; font-weight: bold; font-size: 16px; border-radius: 6px; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+    button:hover { background: #00cc6a; transform: scale(1.02); }
+    .btn-grup { background: #25D366; color: #fff; }
+    .btn-grup:hover { background: #1ebe57; }
+    .note { font-size: 12px; color: #888; text-align: center; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logos">
+        <img src="komunitas.png" alt="Logo Komunitas">
+        <img src="cyber.png" alt="Logo Cyber">
+    </div>
+    
+    <h2>PENDAFTARAN MEMBER</h2>
+    <h4>KOMUNITAS CYBER SECURITY</h4>
+    
+    <form id="daftarForm">
+        <input type="text" id="nama" placeholder="Nama Lengkap" required>
+        <input type="tel" id="wa" placeholder="No WhatsApp: 08xxxxxxxx" required>
+        <input type="text" id="domisili" placeholder="Domisili / Kota" required>
+        <select id="skill" required>
+            <option value="">- Pilih Bidang Minat -</option>
+            <option value="Pemula">Pemula</option>
+            <option value="Web Security">Web Security / Bug Bounty</option>
+            <option value="Network Security">Network Security</option>
+            <option value="OSINT">OSINT & Digital Forensic</option>
+            <option value="Pentest">Penetration Testing</option>
+        </select>
+        <textarea id="alasan" rows="3" placeholder="Ceritakan alasan mau gabung..." required></textarea>
+        
+        <button type="submit">1. KIRIM DATA KE ADMIN</button>
+        <button type="button" class="btn-grup" onclick="gabungGrup()">2. GABUNG GRUP WA</button>
+    </form>
+    <p class="note">*Langkah 1 dulu, baru Langkah 2*</p>
+</div>
+
+<script>
+const ADMIN_WA = "62812761497"; // 0812761497
+const LINK_GRUP = "https://chat.whatsapp.com/LoN2FledHd6HVAb8mYIf6Z?s=cl&p=a&ilr=4&amv=3"; // <-- GANTI INI
+
+document.getElementById('daftarForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let nama = document.getElementById('nama').value;
+    let wa = document.getElementById('wa').value;
+    let domisili = document.getElementById('domisili').value;
+    let skill = document.getElementById('skill').value;
+    let alasan = document.getElementById('alasan').value;
+    
+    let pesan = `*PENDAFTARAN MEMBER BARU*%0A%0A*Nama:* ${nama}%0A*No WA:* ${wa}%0A*Domisili:* ${domisili}%0A*Skill:* ${skill}%0A*Alasan:* ${alasan}%0A%0A_Dikirim dari Web Pendaftaran_`;
+    
+    window.open(`https://wa.me/${ADMIN_WA}?text=${pesan}`, '_blank');
+    alert("Data sudah dikirim ke Admin! Sekarang klik tombol 'GABUNG GRUP WA' ya");
+});
+
+function gabungGrup() {
+    window.open(LINK_GRUP, '_blank');
+}
+</script>
+
+</body>
+</html>
